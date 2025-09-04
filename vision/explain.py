@@ -20,12 +20,14 @@ client = openai.OpenAI(
 )
 
 response = client.chat.completions.create(
-    model="accounts/fireworks/models/qwen2p5-vl-32b-instruct",
+    model="accounts/fireworks/models/llama4-maverick-instruct-basic",
     messages=[{
         "role": "system",
         "content": [{
             "type": "text",
-            "text": "Can you describe this image?",
+            "text": ("Extract information form the image and return it as a"
+                     "strict JSON object with fields 'title', 'x-axis',"
+                     "'y-axis' and 'number-of-points"),
         }, {
             "type": "image_url",
             "image_url": {
