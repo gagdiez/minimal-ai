@@ -7,6 +7,9 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 
 def main():
+    if not os.path.exists("./chroma/"):
+        raise ValueError("Please run `python create-vector.py` first")
+
     chroma_client = chromadb.PersistentClient(path="./chroma/")
     collection = chroma_client.get_collection(name='cities')
 
